@@ -38,10 +38,10 @@ int start_game(int *level, int *lines_cleared)
 	tetrimino_new(&well);
 
 	timer_init();
-	itimer_init(20000 * 1000); // 20k microseconds
+	itimer_init(20000*1000); // 20k microseconds
 
 	while (game_running) {
-		sleep(20000 * 1000);
+		sleep(20000);
 
 		switch (INPUT_DOWN) {
 			case INPUT_RIGHT:

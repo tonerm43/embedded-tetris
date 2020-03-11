@@ -20,3 +20,6 @@ CTestTestfile.cmake
 
 # Project Specific
 extern/
+
+# Debug folder garbage (probably doesnt need to be checked in?????)
+Debug/
