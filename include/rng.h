@@ -1,12 +1,7 @@
-/*
- * rng.h
- *
- *  Created on: Feb 26, 2020
- *      Author: bricha11
- */
-
 #ifndef INCLUDE_RNG_H_
 #define INCLUDE_RNG_H_
+
+#include "MK64F12.h"
 
 void init_random();
 

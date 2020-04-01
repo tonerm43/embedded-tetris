@@ -1,14 +1,9 @@
 #include "game-engine.h"
 #include "game-timer.h"
+#include "input-capture.h"
 #include "tetris-well.h"
+#include "vga-driver.h"
 
-#define INPUT_LEFT 1
-#define INPUT_RIGHT 2
-#define INPUT_DOWN 3
-#define INPUT_ROTATE 4
-#define INPUT_PAUSE 5
-#define INPUT_STOP 6
-#define INPUT_DROP 7
 
 static const int score_chart[] = {0, 40, 100, 300, 1200};
 static const int level_gravity_speeds[] = {
@@ -43,14 +38,16 @@ int start_game(int *level, int *lines_cleared)
 	while (game_running) {
 		sleep(20000);
 
-		switch (INPUT_DOWN) {
+		switch (user_input()) {
 			case INPUT_RIGHT:
 				if (!paused)
 					tetrimino_shift(&well, SHIFT_RIGHT);
+					gpio_write_graphics_data(&well);
 				break;
 			case INPUT_LEFT:
 				if (!paused)
 					tetrimino_shift(&well, SHIFT_LEFT);
+					gpio_write_graphics_data(&well);
 				break;
 			case INPUT_DOWN:
 				if (!paused)
@@ -59,6 +56,7 @@ int start_game(int *level, int *lines_cleared)
 			case INPUT_ROTATE:
 				if (!paused)
 					tetrimino_rotate(&well);
+					gpio_write_graphics_data(&well);
 				break;
 			case INPUT_DROP:
 				while (!tetrimino_shift(&well, SHIFT_DOWN));
@@ -82,6 +80,7 @@ int start_game(int *level, int *lines_cleared)
 					game_running = 0;
 			}
 
+			gpio_write_graphics_data(&well);
 			drop = 0;
 		}
 	}

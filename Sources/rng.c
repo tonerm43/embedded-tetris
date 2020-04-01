@@ -1,10 +1,3 @@
-/*
- * rng.c
- *
- *  Created on: Feb 26, 2020
- *      Author: bricha11
- */
-#include "MK64F12.h"
 #include "rng.h"
 
 void init_random()
