@@ -1,11 +1,15 @@
+/**
+* FILENAME : game-timer.h
+*
+* DESCRIPTION :
+*       Header for game-timer.c
+*
+* AUTHORS :    Brandon Richardson, Mackenzie Toner
+*
+*/
+
 #ifndef INCLUDE_GAME_TIMER_H_
 #define INCLUDE_GAME_TIMER_H_
-
-/**
- * game-timer.h
- *
- * Utilizes the FlexTimer Module (FTM) to
- * */
 
 /**
  * Initialize `sleep`-like timer functionality.

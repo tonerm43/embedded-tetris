@@ -1,3 +1,13 @@
+/**
+* FILENAME : game-engine.c
+*
+* DESCRIPTION :
+*       Function implementations for game-engine module
+*
+* AUTHORS :    Brandon Richardson, Mackenzie Toner
+*
+*/
+
 #include "game-engine.h"
 #include "game-timer.h"
 #include "input-capture.h"

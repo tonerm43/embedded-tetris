@@ -1,3 +1,13 @@
+/**
+* FILENAME : rng.c
+*
+* DESCRIPTION :
+*       Function implementations for rng module
+*
+* AUTHORS :    Brandon Richardson, Mackenzie Toner
+*
+*/
+
 #include "rng.h"
 
 void init_random()

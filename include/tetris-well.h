@@ -1,3 +1,13 @@
+/**
+* FILENAME : tetris-well.h
+*
+* DESCRIPTION :
+*       Header for tetris-well.c
+*
+* AUTHORS :    Brandon Richardson, Mackenzie Toner
+*
+*/
+
 #ifndef TETRIS_TETRIS_WELL_H
 #define TETRIS_TETRIS_WELL_H
 

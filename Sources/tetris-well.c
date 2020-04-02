@@ -1,3 +1,13 @@
+/**
+* FILENAME : tetris-well.c
+*
+* DESCRIPTION :
+*       Function implementations for tetris-well module
+*
+* AUTHORS :    Brandon Richardson, Mackenzie Toner
+*
+*/
+
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>

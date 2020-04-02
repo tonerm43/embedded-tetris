@@ -1,6 +1,17 @@
+/**
+* FILENAME : input-capture.c
+*
+* DESCRIPTION :
+*       Function implementations for input-capture module
+*
+* AUTHORS :    Brandon Richardson, Mackenzie Toner
+*
+*/
+
 #include "input-capture.h"
 
-void init_input_capture() {
+void init_input_capture()
+{
 	// Set up ADCs for joystick
 	SIM_SCGC6 |= SIM_SCGC6_ADC0_MASK;
 	SIM_SCGC3 |= SIM_SCGC3_ADC1_MASK;
@@ -15,7 +26,8 @@ void init_input_capture() {
 	PORTC_PCR11 |= PORT_PCR_MUX(1); // Drop
 }
 
-int user_input() {
+int user_input()
+{
 	// Start conversions for ADC
 	ADC0_SC1A |= 0b0000001;
 	ADC1_SC1A |= 0b0000001;

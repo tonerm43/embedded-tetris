@@ -1,3 +1,13 @@
+/**
+* FILENAME : vga-driver.h
+*
+* DESCRIPTION :
+*       Header for vga-driver.c
+*
+* AUTHORS :    Brandon Richardson, Mackenzie Toner
+*
+*/
+
 #ifndef INCLUDE_VGA_DRIVER_H_
 #define INCLUDE_VGA_DRIVER_H_
 
@@ -19,7 +29,15 @@
 #define BLOCK_SIZE_VERTICAL 24
 #define BLOCK_SIZE_HORIZONTAL 6
 
+/**
+ * Initialize GPIO pins for use by the vga driver
+ */
 void init_vga_driver();
+
+/**
+ * Use the current state of the well to write pixel data
+ * to VGA circuit memory
+ */
 void gpio_write_graphics_data(struct tetris_well *well);
 
 #endif /* INCLUDE_VGA_DRIVER_H_ */

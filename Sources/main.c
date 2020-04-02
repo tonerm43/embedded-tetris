@@ -1,3 +1,14 @@
+/**
+* FILENAME : main.c
+*
+* DESCRIPTION :
+*       Main function responsible for initializing
+*       modules and starting the tetris game
+*
+* AUTHORS :    Brandon Richardson, Mackenzie Toner
+*
+*/
+
 #include "game-engine.h"
 #include "input-capture.h"
 #include "rng.h"

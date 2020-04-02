@@ -1,3 +1,13 @@
+/**
+* FILENAME : vga-driver.c
+*
+* DESCRIPTION :
+*       Function implementations for vga-driver module
+*
+* AUTHORS :    Brandon Richardson, Mackenzie Toner
+*
+*/
+
 #include "vga-driver.h"
 
 void set_data_lines(uint8_t data);
@@ -37,7 +47,8 @@ void init_vga_driver()
 	GPIOD_PSOR |= (1 << 2);
 }
 
-void gpio_write_graphics_data(struct tetris_well *well) {
+void gpio_write_graphics_data(struct tetris_well *well)
+{
 	// Set GPIO RAM LOAD
 	GPIOC_PSOR |= (1 << 4);
 
@@ -82,7 +93,8 @@ void gpio_write_graphics_data(struct tetris_well *well) {
 	GPIOC_PCOR |= (1 << 4);
 }
 
-void set_data_lines(uint8_t data) {
+void set_data_lines(uint8_t data)
+{
 	GPIOC_PSOR |= (data & 1) << 16;
 	GPIOC_PSOR |= ((data & (1 << 1)) >> 1) << 17;
 	GPIOB_PSOR |= ((data & (1 << 2)) >> 2) << 9;
@@ -93,7 +105,8 @@ void set_data_lines(uint8_t data) {
 	GPIOC_PSOR |= ((data & (1 << 7)) >> 7) << 3;
 }
 
-uint8_t colour_for(uint8_t cell) {
+uint8_t colour_for(uint8_t cell)
+{
 	switch (cell) {
 		case CELL_TYPE_NONE:
 			return CELL_COLOUR_NONE;
