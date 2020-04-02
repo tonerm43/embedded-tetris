@@ -1,3 +1,13 @@
+/**
+* FILENAME : game-timer.c
+*
+* DESCRIPTION :
+*       Function implementations for game-timer module
+*
+* AUTHORS :    Brandon Richardson, Mackenzie Toner
+*
+*/
+
 #include "MK64F12.h"
 
 #define FREQ 20971520
