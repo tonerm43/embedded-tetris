@@ -1,18 +1,19 @@
 /**
-* FILENAME : vga-driver.h
+* FILENAME : graphics-driver.h
 *
 * DESCRIPTION :
-*       Header for vga-driver.c
+*       Header for graphics-driver.c
 *
 * AUTHORS :    Brandon Richardson, Mackenzie Toner
 *
 */
 
-#ifndef INCLUDE_VGA_DRIVER_H_
-#define INCLUDE_VGA_DRIVER_H_
+#ifndef INCLUDE_GRAPHICS_DRIVER_H_
+#define INCLUDE_GRAPHICS_DRIVER_H_
 
-#include "tetris-well.h"
 #include "MK64F12.h"
+#include "serial-driver.h"
+#include "tetris-well.h"
 
 /* Colours for each tetromino, compliant with 8-bit colour format */
 #define CELL_COLOUR_NONE 0x00
@@ -32,12 +33,12 @@
 /**
  * Initialize GPIO pins for use by the vga driver
  */
-void init_vga_driver();
+void init_graphics_driver();
 
 /**
  * Use the current state of the well to write pixel data
- * to VGA circuit memory
+ * to VGA circuit memory and serial interface
  */
-void gpio_write_graphics_data(struct tetris_well *well);
+void write_graphics_data(struct tetris_well *well);
 
-#endif /* INCLUDE_VGA_DRIVER_H_ */
+#endif /* INCLUDE_GRAPHICS_DRIVER_H_ */

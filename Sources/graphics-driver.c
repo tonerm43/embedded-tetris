@@ -1,19 +1,20 @@
 /**
-* FILENAME : vga-driver.c
+* FILENAME : graphics-driver.c
 *
 * DESCRIPTION :
-*       Function implementations for vga-driver module
+*       Function implementations for graphics-driver module
 *
 * AUTHORS :    Brandon Richardson, Mackenzie Toner
 *
 */
 
-#include "vga-driver.h"
+#include "graphics-driver.h"
 
+void gpio_write_graphics_data(struct tetris_well *well);
 void set_data_lines(uint8_t data);
 uint8_t colour_for(uint8_t cell);
 
-void init_vga_driver()
+void init_graphics_driver()
 {
 	// Enable ports for GPIO
 	SIM_SCGC5 |= SIM_SCGC5_PORTA_MASK | SIM_SCGC5_PORTB_MASK |
@@ -45,6 +46,12 @@ void init_vga_driver()
 
 	// GPIO RAM COMMIT is active low, so initialize to high
 	GPIOD_PSOR |= (1 << 2);
+}
+
+void write_graphics_data(struct tetris_well *well)
+{
+	serial_print_well(well);
+	gpio_write_graphics_data(well);
 }
 
 void gpio_write_graphics_data(struct tetris_well *well)
