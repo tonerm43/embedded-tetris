@@ -10,9 +10,10 @@
 
 #include "game-engine.h"
 #include "game-timer.h"
+#include "graphics-driver.h"
 #include "input-capture.h"
 #include "tetris-well.h"
-#include "vga-driver.h"
+#include "serial-driver.h"
 
 
 static const int score_chart[] = {0, 40, 100, 300, 1200};
@@ -46,18 +47,16 @@ int start_game(int *level, int *lines_cleared)
 	itimer_init(20000*1000); // 20k microseconds
 
 	while (game_running) {
-		sleep(20000);
-
 		switch (user_input()) {
 			case INPUT_RIGHT:
 				if (!paused)
 					tetrimino_shift(&well, SHIFT_RIGHT);
-					gpio_write_graphics_data(&well);
+					write_graphics_data(&well);
 				break;
 			case INPUT_LEFT:
 				if (!paused)
 					tetrimino_shift(&well, SHIFT_LEFT);
-					gpio_write_graphics_data(&well);
+					write_graphics_data(&well);
 				break;
 			case INPUT_DOWN:
 				if (!paused)
@@ -66,7 +65,7 @@ int start_game(int *level, int *lines_cleared)
 			case INPUT_ROTATE:
 				if (!paused)
 					tetrimino_rotate(&well);
-					gpio_write_graphics_data(&well);
+					write_graphics_data(&well);
 				break;
 			case INPUT_DROP:
 				while (!tetrimino_shift(&well, SHIFT_DOWN));
@@ -90,7 +89,7 @@ int start_game(int *level, int *lines_cleared)
 					game_running = 0;
 			}
 
-			gpio_write_graphics_data(&well);
+			write_graphics_data(&well);
 			drop = 0;
 		}
 	}
@@ -109,4 +108,7 @@ void FTM2_IRQHandler(void)
 		frames = 0;
 		drop = 1;
 	}
+
+	// Set the timer overflow flag to 0 to clear interrupt.
+	FTM2_SC &= ~FTM_SC_TOF_MASK;
 }

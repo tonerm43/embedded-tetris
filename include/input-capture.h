@@ -12,6 +12,7 @@
 #define INCLUDE_INPUT_CAPTURE_H_
 
 #include "MK64F12.h"
+#include "serial-driver.h"
 
 #define INPUT_LEFT 1
 #define INPUT_RIGHT 2
